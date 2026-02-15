@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 export default function Sheet() {
   const rows = useSelector((state) => state.sheetValue.rows)
   const cols = useSelector((state) => state.sheetValue.cols)
+  const [currentCell,setCurrentCell]=useState('');
 
   const [colHeader, setColHeader] = useState([])
   const inputsRef = useRef([])
@@ -27,10 +28,11 @@ export default function Sheet() {
   }
 
   return (
+    <>
     <div className="overflow-auto">
       <table className="border-collapse">
         <tbody>
-          {/* Header Row */}
+
           <tr>
             <td className="border bg-gray-100 w-12"></td>
             {colHeader.map((column, c) => (
@@ -43,7 +45,6 @@ export default function Sheet() {
             ))}
           </tr>
 
-          {/* Data Rows */}
           {Array.from({ length: rows }).map((_, r) => (
             <tr key={r}>
               <td className="border bg-gray-100 text-center w-12">{r + 1}</td>
@@ -68,5 +69,6 @@ export default function Sheet() {
         </tbody>
       </table>
     </div>
+    </>
   )
 }

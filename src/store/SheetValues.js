@@ -21,6 +21,7 @@ function resizePreserveData(oldData, newRows, newCols) {
 export const SheetValueSlice = createSlice({
   name: 'SheetValues',
   initialState: {
+    sheetName:'Sheet1',
     rows: 100,
     cols: 100,
     data: createGrid(100, 100)
@@ -38,6 +39,9 @@ export const SheetValueSlice = createSlice({
 
       state.rows = rows
       state.cols = cols
+    },
+    setSheetname(state,action){
+
     }
   }
 })
